@@ -21,8 +21,20 @@ public class Pet {
 		return id;
 	}
 
+	public Pet() {
+		super();
+	}
+
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public Pet(long id, String name, Animal type, int age) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.type = type;
+		this.age = age;
 	}
 
 	public String getName() {

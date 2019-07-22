@@ -15,3 +15,13 @@ enum Animal {
     BADGER
     MAMMOTH
 }
+
+type Mutation {
+    createPet(input: CreatePetInput): Pet
+}
+
+
+input CreatePetInput {
+    name: String
+    age: String
+}
