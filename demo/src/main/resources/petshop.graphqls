@@ -1,9 +1,9 @@
 type Query {
-    pets: [Pet]
+    pets(id:ID): [Pet]
 }
 
 type Pet {
-   id: Int
+   id: ID
     type: Animal
     name: String
     age: Int
