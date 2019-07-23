@@ -1,15 +1,20 @@
 package com.example.demo.model;
 
 import com.example.demo.enums.Animal;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.Generated;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
+@Document(collection = "Pets")
 public class Pet {
 	
-	private long id;
+	@Id 
+	private String id;
 
     private String name;
 
@@ -17,7 +22,7 @@ public class Pet {
 
     private int age;
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
@@ -25,11 +30,11 @@ public class Pet {
 		super();
 	}
 
-	public void setId(long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Pet(long id, String name, Animal type, int age) {
+	public Pet( String id, String name, Animal type, int age) {
 		super();
 		this.id = id;
 		this.name = name;

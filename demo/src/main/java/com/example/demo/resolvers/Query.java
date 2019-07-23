@@ -4,51 +4,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
 import com.example.demo.enums.Animal;
 import com.example.demo.model.Pet;
+import com.example.demo.repository.PetRepository;
 
 @Component
 public class Query implements GraphQLQueryResolver {
 	
-	public List<Pet> pets() {
-        List<Pet> pets = new ArrayList<>();
+	@Autowired
+	private PetRepository repository;
 
-		Pet pet1 = new Pet();
-		pet1.setId(1);
-		pet1.setName("Billi");
-		pet1.setType(Animal.CAT);
-		pet1.setAge(10);
-		pets.add(pet1);
-		Pet pet2 = new Pet();
-		pet2.setId(2);
-		pet2.setName("kutta");
-		pet2.setType(Animal.DOG);
-		pet2.setAge(14);
-		pets.add(pet2);
-		return pets;
-		
-	}
+//	public List<Pet> pets() {		
+//		return repository.findAll();
+//		
+//	}
 	
-	public List<Pet> pets(Long id) {
-        List<Pet> pets = new ArrayList<>();
-
-		Pet pet1 = new Pet();
-
-		pet1.setId(1);
-		pet1.setName("Billi");
-		pet1.setType(Animal.CAT);
-		pet1.setAge(10);
-		pets.add(pet1);
-		Pet pet2 = new Pet();
-		pet2.setId(2);
-		pet2.setName("kutta");
-		pet2.setType(Animal.DOG);
-		pet2.setAge(14);
-		pets.add(pet2);
-		return pets.stream().filter(a ->a.getId()==id).collect(Collectors.toList());
+	public Pet pets(String id) {
+		return  repository.findByid(id);
 		
 	}
 }
