@@ -18,10 +18,10 @@ public class Query implements GraphQLQueryResolver {
 	@Autowired
 	private PetRepository repository;
 
-//	public List<Pet> pets() {		
-//		return repository.findAll();
-//		
-//	}
+	public List<Pet> pets() {		
+		return repository.findAll();
+		
+	}
 	
 	public Pet pets(String id) {
 		return  repository.findByid(id);
